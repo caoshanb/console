@@ -1,0 +1,109 @@
+.main {
+  font-family: '微软雅黑';
+  font-size: 12px;
+  margin-top: 20px;
+}
+.main p {
+  padding: 0;
+  margin: 0;
+}
+.main .queryCondition div {
+  margin-top: 10px;
+}
+.main .queryCondition div:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.main .queryCondition li {
+  float: left;
+  padding-right: 50px;
+  list-style: none;
+}
+.main .queryCondition li input[type='radio'] {
+  vertical-align: middle;
+  margin-top: -2px;
+  margin-bottom: 1px;
+}
+.main .queryCondition li input[type='text'] {
+  height: 20px;
+  padding-left: 5px;
+}
+.main .queryCondition li strong,
+.main .queryCondition li label {
+  padding-right: 6px;
+}
+.main .queryCondition li > strong {
+  width: 50px;
+  text-align: right;
+  display: inline-block;
+}
+.main .queryCondition li button {
+  width: 80px;
+  border-radius: 6px;
+  height: 25px;
+  line-height: 25px;
+  display: block;
+  background: #3083EB;
+  text-align: center;
+  color: #fff;
+  _height: 26px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+.main .queryCondition li .time1 {
+  width: 190px;
+  height: 25px;
+  line-height: 25px;
+  /*float: left;*/
+  padding-left: 10px;
+  color: #666;
+  outline: none;
+  border: solid 1px #ccc;
+  _width: 160px;
+  _height: 28px;
+  margin-left: 10px;
+  cursor: pointer;
+  background: url(../images/date.jpg) 170px 5px no-repeat;
+}
+.main .queryCondition:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.main .queryCondition > div:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.main:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.main .orderList {
+  margin-top: 15px;
+}
+.main .orderList table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border-bottom: 1px #ECECEC solid;
+}
+.main .orderList table tr th {
+  background: #D2D2D2;
+  height: 30px;
+  line-height: 30px;
+}
+.main .orderList table tr:nth-child(even) td {
+  background: #F0F0F0;
+}
+.main .orderList table tr td {
+  padding: 10px 0;
+  text-align: center;
+}
+.main .orderList table tr td a {
+  color: #EC9007;
+  padding-right: 15px;
+}

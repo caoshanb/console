@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+  <link rel="stylesheet/less" type="text/css" href="styles.less" />
+  <link rel="stylesheet" type="text/css" href="css/operation.css">
+  <script type="text/javascript" src="js/jquery-1.8.0.min.js" ></script>
+  <script type="text/javascript" src="laydate/laydate.js"></script>
+  <style type="text/css"></style>
+</head>
+<body>
+	<div class="main">
+		<div class="title">
+			<strong>回传预约</strong>
+		</div>
+		<div class="content">
+			<form>
+				<ul>
+					<li>
+						<label>4.0工单号</label>
+						<span>18000000000000</span>
+					</li>
+					<li>
+						<label>工单号</label>
+						<span>180000023212</span>
+					</li>
+					<li>
+						<label>当前状态</label>
+						<span>预约超期</span>
+					</li>
+					<li>
+						<label>预约时间</label>
+						<span><input class="laydate-icon-default"  skin="default" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"  name="appointment_time" placeholder="预约时间"></span>
+					</li>
+					<li>
+						<label>是否改约</label>
+						<span>
+							<label><input type="radio" name="is_modification" />是</label>
+							<label><input type="radio" name="is_modification" />否</label>
+						</span>
+					</li>
+					<li>
+						<label>改约原因</label>
+						<span>
+							<select name="modificationReason">
+								<option value=''>请选择</option>
+								<option value='1'>改约1</option>
+								<option value='2'>改约2</option>
+								<option value='3'>改约3</option>
+							</select>
+						</span>
+					</li>
+				</ul>
+				<div class="referBut">
+					<button>提交</button>
+				</div>
+			</form>
+			
+		</div>
+	</div>
+</body>
+</html>

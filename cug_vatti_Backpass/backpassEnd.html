@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+  <link rel="stylesheet/less" type="text/css" href="styles.less" />
+  <link rel="stylesheet" type="text/css" href="css/operation.css">
+  <script type="text/javascript" src="js/jquery-1.8.0.min.js" ></script>
+  <script type="text/javascript" src="laydate/laydate.js"></script>
+  <script type="text/javascript" src="js/plupload.full.min.js"></script>
+
+</head>
+<body>
+	<div class="main">
+		<div class="title">
+			<strong>回传完结</strong>
+		</div>
+		<div class="content">
+			<form>
+				<div class="orderInfo">
+					<ul>
+						<li>
+							<label>4.0工单号</label>
+							<span>18000000000000</span>
+						</li>
+						<li>
+							<label>工单号</label>
+							<span>180000023212</span>
+						</li>
+						<li>
+							<label>当前状态</label>
+							<span>预约超期</span>
+						</li>
+						<li>
+							<label>条码</label>
+							<span>
+								<input type="text" name="bar_code" placeholder="请输入条码" />
+								<button  type="button" class="queryBut">查询</button>
+							</span>
+						</li>
+						<li>
+							<label>产品编码</label>
+							<span><input type="text" name="product_coding"   placeholder="请输入产品编码" /> </span>
+						</li>
+						<li>
+							<label>购买日期</label>
+							<span><input class="laydate-icon-default"  skin="default" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"  name="purchasing_date" placeholder="购买日期"></span>
+						</li>
+						<li>
+							<label>购买渠道</label>
+							<span>
+								<label><input type="radio"  name='purchase_channel' />线上</label>
+								<label><input type="radio"  name='purchase_channel' />线下</label>
+							</span>
+						</li>
+						<li>
+							<label>完结日期</label>
+							<span><input class="laydate-icon-default"  skin="default" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"  name="end_date" placeholder="完结日期"></span>
+						</li>
+						<li>
+							<label>完结省市</label>
+							<span class="address">
+								<select id="province">
+									<option value='' >请选择省</option>
+                                    <option value='1' >1</option>
+								</select>
+								<select id="city">
+									<option value=''>请选择市</option>
+                                    <option value='1' >1</option>
+								</select>
+							</span>
+						</li>
+						<li>
+							<label class="cancel">备注内容</label>
+							<textarea name="remarks" placeholder="请输入备注" rows="5" cols="30"></textarea>
+						</li>
+						<li>
+							<label class="cancel">完结信息</label>
+							<textarea name="endInfo" placeholder="请输入备注" rows="5" cols="30"></textarea>
+						</li>
+					</ul>
+					<ul>
+						
+						<li>
+							<label class="cancel">维修措施</label>
+							<select id="repair">
+								<option value='' >请选择</option>
+                                <option value='1' >1</option>
+							</select>
+						</li>
+						<li>
+							<label class="cancel">故障原因</label>
+							<select id="failure_cause">
+								<option value='' >请选择</option>
+                                <option value='1' >1</option>
+							</select>
+						</li>
+						<li>
+							<label class="cancel">故障现象</label>
+							<select id="failure_phenomenon">
+								<option value='' >请选择</option>
+                                <option value='1' >1</option>
+							</select>
+						</li>
+						<li>
+							<label class="cancel">图片</label>
+							<span class="contentFile">
+                                <div class="up_case " style="">
+                                    <div class="ie">
+                                        <a href="javascript:;" class="save_a" onclick="save_img()">
+                                            <a href="#" class="show_file"  selected-img="1">上传图片</a>
+                                            <input type="button"  id="browse"  />
+                                            <span class="loading"></span>
+                                        </a>
+                                    </div>
+                                    <ul id="file-list" style="width: 650px">
+                                    </ul>
+                                </div> 
+						</span>
+							
+						</li>
+					</ul>
+				</div>
+				<div class="referBut addStyle">
+					<button  type="button" id="submitBut" >提交</button>
+				</div>
+			</form>
+			
+		</div>
+	</div>
+</body>
+<script>
+
+    $("#submitBut").click(function(){
+        submitOrderInfo();
+    });
+
+
+            /* addJs*/
+        $(function(){
+            $("#file-list").on("click",".img_close",function(){
+                $(this).parent("li").remove();
+            });
+        });
+
+        pluploadinit();
+        function save_img()
+        {
+            document.getElementById('browse').click();
+        }
+
+        function pluploadinit() {
+
+            window.uploader = new plupload.Uploader({ //实例化一个plupload上传对象
+                browse_button : 'browse',
+                url : 'www.baidu.com',
+                flash_swf_url : 'js/Moxie.swf',
+                silverlight_xap_url : 'js/Moxie.xap',
+                filters: {
+                    mime_types : [ //只允许上传图片文件
+                        { title : "图片文件", extensions : "jpg,gif,png" }
+                    ]
+                }
+            });
+            window.uploader.init(); //初始化
+
+            //绑定文件添加进队列事件
+            window.uploader.bind('FilesAdded',function(uploader,files){
+                for(var i = 0, len = files.length; i<len; i++){
+                    var file_name = files[i].name; //文件名
+                    //构造html来更新UI
+
+                    var html = '<li id="file-' + files[i].id +'" ><div class="img_close"></div><p class="progress"></p></li>';
+                    $(html).appendTo('#file-list');
+                    !function(i){
+                        previewImage(files[i],function(imgsrc){
+                            $('#file-'+files[i].id).append('<img src="'+ imgsrc +'" />');
+                        })
+                    }(i);
+                }
+            });
+
+            //plupload中为我们提供了mOxie对象
+            function previewImage(file,callback) {
+                //file为plupload事件监听函数参数中的file对象,callback为预览图片准备完成的回调函数
+                if(!file || !/image\//.test(file.type))
+                    return;
+                if(file.type=='image/gif'){
+                    var fr = new mOxie.FileReader();
+                    fr.onload = function(){
+                        callback(fr.result);
+                        fr.destroy();
+                        fr = null;
+                    };
+                    fr.readAsDataURL(file.getSource());
+                }else{
+                    var preloader = new mOxie.Image();
+                    preloader.onload = function() {
+                        preloader.downsize( 300, 300 );//先压缩一下要预览的图片,宽300，高300
+                        var imgsrc = preloader.type=='image/jpeg' ? preloader.getAsDataURL('image/jpeg',80) : preloader.getAsDataURL(); //得到图片src,实质为一个base64编码的数据
+                        callback && callback(imgsrc); //callback传入的参数为预览图片的url
+                        preloader.destroy();
+                        preloader = null;
+                    };
+                    preloader.load( file.getSource() );
+                }
+            }
+        }
+
+        function get_image_id(){
+            var pt_name = new Array();
+            $('.images').each(function(){
+                var images_id=$(this).find(".images_id").val();
+                pt_name.push(images_id);
+            });
+            return pt_name;
+        }
+        var lock_complaint=false;
+            //写入判断条件函数
+            function submitOrderInfo(){
+                if(lock_complaint){
+                    return;
+                }
+                var data={};
+                var content;
+                data.bar_code=$("input[name='bar_code']").val().trim();
+                data.product_coding=$("input[name='product_coding']").val().trim();
+                data.purchasing_date=$("input[name='purchasing_date']").val().trim();
+                data.purchase_channel=$("input[name='purchase_channel']:checked").val();
+                data.end_date=$("input[name='end_date']").val().trim();
+                data.province=$("#province").val();
+                data.city=$("#city").val();
+                data.repair=$("#repair").val();
+                data.failure_cause=$("#failure_cause").val();
+                data.failure_phenomenon=$("#failure_phenomenon").val();
+
+                if(!data.bar_code){
+                     alert("请填写条码");return;
+                }
+                 if(!data.product_coding){
+                     alert("请填写产品编码");return;
+                }
+                 if(!data.purchasing_date){
+                     alert("请选择购买日期");return;
+                }
+                 if(data.purchase_channel==undefined){
+                     alert("请选择购买渠道");return;
+                }
+                 if(!data.end_date){
+                     alert("请选择完结日期");return;
+                } 
+                if(!data.province || !data.city){
+                     alert("请选择完结省市");return;
+                }
+                if(!data.repair){
+                     alert("请选择维修措施");return;
+                } 
+                if(!data.failure_cause){
+                    alert("请选择故障原因");return;
+                } 
+                if(!data.failure_phenomenon){
+                     alert("请选择故障现象");return;
+                } 
+                if($("#file-list").find("li").length==0){
+                    alert("至少上传一张图片");return;
+                }
+                var img_ids=new Array();
+                window.uploader.bind('FileUploaded',function(uploader, file, responseObject){
+                    if(responseObject.response && responseObject.status == 200) {
+                        img_ids.push(responseObject.response);
+
+                    }
+                    else {
+                        console.log(responseObject.response);
+                        alert('上传失败');
+                    }
+
+                });
+
+                //上传完成后执行
+                window.uploader.bind('UploadComplete',function(uploader,file){
+                    data.image=img_ids;
+                    // var loading=art.dialog({
+                    //     lock: true,
+                    //     opacity: 0.4,
+                    //     content:'正在提交..<img src="__PUBLIC__/Home/images/loading.gif" /> '
+
+                    // });
+
+                    lock_complaint=true;
+                    cmyajax("url",data);//获取图片id后提交
+                });
+                window.uploader.start();
+                pluploadinit();
+
+            }
+    </script>
+
+
+    <script>
+
+        function cmyajax(url,data){
+            $.ajax({
+                url:url,
+                type:'post',
+                data:data,
+                success:function(data){
+					lock_complaint=false;
+
+                }
+            });
+        }
+    </script>
+</html>

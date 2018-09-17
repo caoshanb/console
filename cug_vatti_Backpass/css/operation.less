@@ -1,0 +1,151 @@
+.clear(){
+	content: '';
+	display: block;
+	clear:both;	
+}
+.main{
+	p,ul,li{
+		padding: 0;
+		margin: 0;
+	}
+	font-family: '微软雅黑';
+	.title{
+		text-indent: 1em
+	}
+	.content{
+		font-size: 14px;
+		.orderInfo{
+			ul{
+				/*max-height:410px;*/
+				float: left;
+				width: 31%;	
+		 	}
+		 	&:after{.clear()};
+		}
+		 &:after{.clear()};
+		li{list-style: none;
+			line-height: 46px;
+			>label{
+				width: 90px;
+				display: inline-block;
+				text-align:right;
+				padding-right: 12px;
+			}
+			select{
+				width: 265px;
+			    height: 26px;
+			    background: #FFF;
+			}
+			span>label{
+				width: 70px;
+				display: inline-block;
+			}
+			input{
+				vertical-align: middle;
+			}
+			input[type='text']{
+				height: 20px;
+				padding-left: 5px;
+			}
+			input[type='radio']{
+				vertical-align:middle; margin-top:-2px; margin-bottom:1px;
+			}
+			.cancel{
+				vertical-align: top;
+			}
+			textarea{
+				margin-top: 15px;
+				padding-left: 5px;
+				padding-left: 5px;
+			}
+			.address{
+				select{
+					width: 110px;
+				}
+			}
+			span{
+				.queryBut{padding: 3px 15px 4px 15px;
+					background:#2E7FE3;
+					color:#FFF;
+					border:none;
+					margin-left: 15px;
+					line-height: 22px;
+				}
+				.laydate-icon-default{
+					width: 151px;
+					padding-left: 5px;
+				}
+			}
+			#addFile{
+				width: 90px;
+			    height: 28px;
+			    line-height: 28px;
+			    margin-top: 10px;
+			    outline: none;
+			    position: relative;
+			    padding: 0px;
+			    z-index: 4;
+			    filter:alpha(opacity=0);   
+			    -moz-opacity:0;   
+			    -khtml-opacity: 0;   
+			    opacity: 0; 
+			    cursor: pointer;
+			}
+			.show_file{
+				width: 90px;
+			    height: 28px;
+			    line-height: 28px;
+			    display: inline-block;
+			    float: left;
+			    margin-top: 10px;
+			    text-align: center;
+			    font-size: 12px;
+			    color: #000;
+			    background: url(../images/upload_ert.png) no-repeat;
+			    position: absolute;
+			    left: 0px;
+			    z-index: 1;
+			    text-decoration: none;
+			}
+			.contentFile{
+				position: relative;
+				.save_a{ 
+				    height: 30px;
+				    width: 90px;
+				    display: inline-block;
+				    margin-top: 10px;
+				    position: relative;
+				    z-index: 1000;
+				}
+				.img_close {
+				    background: url(../images/close_forget.png);
+				    width: 25px;
+				    height: 20px;
+				    float: right;
+				}
+				#file-list{
+					img{width: 120px;height: 80px;border: 1px #dedddd solid;}
+					li{float: left;padding: 5px;}
+				}
+				#browse{height:0;width:0;z-index: -1; position: absolute;left: 10px;top: 5px;display:none;}
+				.up_case{margin-left: 3px;display: inline-block;zoom: 1;position: absolute;}
+			}
+		}
+	}
+	.referBut{
+		padding-top: 35px;
+		button{
+			color:#FFF;
+			padding:5px 35px;
+			background: #2E7FE3;
+			border:none;
+			font-size: 16px;
+			font-weight: 500;
+			margin-left:120px;
+		}
+	}
+	.addStyle{
+		margin-left:320px;
+	}
+	
+}

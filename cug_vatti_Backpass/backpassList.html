@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+  <link rel="stylesheet/less" type="text/css" href="styles.less" />
+  <link rel="stylesheet" type="text/css" href="css/vattiOrderList.css">
+  <script type="text/javascript" src="js/jquery-1.8.0.min.js" ></script>
+  <script type="text/javascript" src="laydate/laydate.js"></script>
+</head>
+<body>
+	<div class="main">
+		<div class="queryCondition">
+			<form>
+				<div>
+					<ul>
+						<li>
+							<strong>回传状态</strong>
+							<label><input type="radio"  name="backpass_state" value='1' />已回传</label>
+							<label><input type="radio"  name="backpass_state" value='2' />取消回传</label>
+						</li>
+						<li>
+							<strong>回传类型</strong>
+							<label><input type="radio" name="backpass_type" value='1'  />预约</label>
+							<label><input type="radio" name="backpass_type" value='2' />取消</label>
+							<label><input type="radio" name="backpass_type" value='3' />完结</label>
+						</li>
+						<li>
+							<strong>超期类型</strong>
+							<label><input type="radio" name="overdue_type" value='1' />预约超期</label>
+							<label><input type="radio" name="overdue_type" value='2'  />完结超期</label>
+						</li>
+						<li>
+							<strong>超期原因</strong>
+							<label><input type="radio" name="overdue_reason"  value='1' />师傅未及时预约</label>
+							<label><input type="radio" name="overdue_reason"  value='2' />系统原因</label>
+							<label><input type="radio" name="overdue_reason" value='3' />客服未及时操作</label>
+						</li>
+					</ul>
+				</div>
+				<div>
+					<ul>
+						<li>
+							<strong>时间</strong>
+							<input class="laydate-icon-default" skin="default" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"  name="strart_time" placeholder="开始时间">
+							<span style="padding:0 6px;">~</span>
+	                        <input class="laydate-icon-default" skin="default" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"  name="end_time" placeholder="结束时间">
+						</li>
+						<li>
+							<strong>工单号</strong>
+							<label><input type="text" name='order_code'  placeholder="工单号/4.0工单号" /></label>
+						</li>
+						<li>
+							<strong>用户信息</strong>
+							<label><input type="text" name='user_info'  placeholder="名称/手机号"   /></label>
+						</li>
+						<li>
+							<p>
+								<button type="submit">查询</button>
+							</p>
+						</li>
+					</ul>
+				</div>
+			</form>
+		</div>
+		<div class="orderList">
+			<table>
+				<tr>
+					<th>工单号</th>
+					<th>工单号</th>
+					<th>预约提交时间</th>
+					<th>回传预约时间</th>
+					<th>取消回传时间</th>
+					<th>完结时间</th>
+					<th>回传完成时间</th>
+					<th>超期类型</th>
+					<th>超期原因</th>
+					<th>操作</th>
+				</tr>
+				<tr>
+					<td>18000000000000</td>
+					<td>182222222222</td>
+					<td>2018-8-7 10:20:00</td>
+					<td>2018-8-7 10:20:00</td>
+					<td>2018-8-7 10:20:00</td>
+					<td>2018-8-7 10:20:00</td>
+					<td>2018-8-7 10:20:00</td>
+					<td>预约超期</td>
+					<td>未及时预约</td>
+					<td>
+						<span><a href="backpassBespeak.html">回传预约</a></span>
+						<span><a href="backpassCancel.html">回传取消</a></span>
+						<span><a href="backpassEnd.html">回传完结</a></span>
+						<span><a href="backpassRemarks.html">回传备注</a></span>
+					</td>
+				</tr>
+				<tr>
+					<td>18000000000000</td>
+					<td>182222222222</td>
+					<td>2018-8-7 10:20:00</td>
+					<td>2018-8-7 10:20:00</td>
+					<td>2018-8-7 10:20:00</td>
+					<td>2018-8-7 10:20:00</td>
+					<td>2018-8-7 10:20:00</td>
+					<td>预约超期</td>
+					<td>未及时超期</td>
+					<td>
+						<span><a href="backpassBespeak.html">回传预约</a></span>
+						<span><a href="backpassCancel.html">回传取消</a></span>
+						<span><a href="backpassEnd.html">回传完结</a></span>
+						<span><a href="backpassRemarks.html">回传备注</a></span>
+					</td>
+				</tr>
+				<tr>
+					<td>18000000000000</td>
+					<td>182222222222</td>
+					<td>2018-8-7 10:20:00</td>
+					<td>2018-8-7 10:20:00</td>
+					<td>2018-8-7 10:20:00</td>
+					<td>2018-8-7 10:20:00</td>
+					<td>2018-8-7 10:20:00</td>
+					<td>预约超期</td>
+					<td>未及时超期</td>
+					<td>
+						<span><a href="backpassBespeak.html">回传预约</a></span>
+						<span><a href="backpassCancel.html">回传取消</a></span>
+						<span><a href="backpassEnd.html">回传完结</a></span>
+						<span><a href="backpassRemarks.html">回传备注</a></span>
+					</td>
+				</tr>
+				<tr>
+					<td>18000000000000</td>
+					<td>182222222222</td>
+					<td>2018-8-7 10:20:00</td>
+					<td>2018-8-7 10:20:00</td>
+					<td>2018-8-7 10:20:00</td>
+					<td>2018-8-7 10:20:00</td>
+					<td>2018-8-7 10:20:00</td>
+					<td>预约超期</td>
+					<td>未及时超期</td>
+					<td>
+						<span><a href="backpassBespeak.html">回传预约</a></span>
+						<span><a href="backpassCancel.html">回传取消</a></span>
+						<span><a href="backpassEnd.html">回传完结</a></span>
+						<span><a href="backpassRemarks.html">回传备注</a></span>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+	</div>
+</body>
+<script type="text/javascript">
+</script>
+</html>
